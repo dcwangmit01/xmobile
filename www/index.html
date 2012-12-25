@@ -1,24 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name = "format-detection" content = "telephone=no"/>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello Cordova</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready">
-                <p class="status pending blink">Connecting to Device</p>
-                <p class="status complete blink hide">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>xmobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cross Platform Phonegap Cordova Example with Bootstrap">
+    <meta name="author" content="David Wang">
+
+    <!-- Styles -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top"></div>
+
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+	<div class="span2">
+	  <div id="sidebar" class="well sidebar-nav"></div>
+	  <br/>
+	  <div id="alert" class="alert"></div>
+	</div>
+	<div class="span10">
+	  <div id="content" class=""></div>
+	  <br/>
+	  <footer class="footer">
+            <p>&copy; Open Source: <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+
+	  </footer>
+	</div>
+      </div>
+    </div>
+    
+    <div class="client-side-include" src="js/templates.html"></div>
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="lib/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="lib/backbone/backbone-min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/d3.v3/d3.v3.min.js"></script>
+    <script type="text/javascript" src="lib/nv.d3/nv.d3.min.js"></script>
+    <script type="text/javascript" src="lib/nv.d3/stream_layers.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

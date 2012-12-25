@@ -1,0 +1,6 @@
+platforms/android/assets/www/index.html
+platforms/ios/www/index.html
+.DS_Store
+#platforms/android/www/*
+#platforms/android/bin/*
+#platforms/android/gen/*

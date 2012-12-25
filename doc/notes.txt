@@ -1,0 +1,32 @@
+
+# Download Android SDK
+https://developer.android.com/sdk/index.html#download
+Unpack and place into ~/.devlib
+
+# Install Node
+brew install node
+brew install ios-sim
+
+# Install cordova
+npm -g install cordova
+
+# Set Path in .bash_profile
+export PATH=${PATH}:~/.devlib/adt-bundle-mac-x86_64/sdk/platform-tools:~/.devlib/adt-bundle-mac-x86_64/sdk/tools
+export PATH=${PATH}:/usr/local/share/npm/bin
+
+# Create a project
+cordova create xmobile xmobile
+cd xmobile
+cordova platform add ios android
+
+# Check it in
+git config --global user.name "First Last"
+git config --global user.email "first.last@gmail.com"
+git init .
+
+# Build the package and run the simulators
+cordova build
+cordova emulate
+
+# Run the webserver: Then point your android phone at it
+cordova serve android
