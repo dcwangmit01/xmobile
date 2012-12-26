@@ -1,0 +1,22 @@
+{
+    "name": "swagger",
+    "description": "swagger",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "3.0.x",
+        "fs": "0.0.x",
+	"http-proxy": "0.8.x",
+        "mongodb": "1.2.x",
+        "socket.io": "0.9.x",
+        "js-yaml": "1.0.x",
+        "underscore": "1.4.x",
+        "underscore.string": "2.3.x",
+        "winston": "0.6.x",
+        "proxy-by-url": "0.0.x"
+    },
+    "engines": {
+        "node": "0.8.16",
+        "npm": "1.1.69"
+    }
+}

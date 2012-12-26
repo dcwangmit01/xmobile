@@ -1,0 +1,5 @@
+config:
+  server:
+    port: 8080
+  log:
+    filename: 'log/server.log'
