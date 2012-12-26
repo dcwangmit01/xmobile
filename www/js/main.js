@@ -57,9 +57,7 @@ var AppRouter = Backbone.Router.extend({
     var deferreds = [];
     $(".client-side-include").each(function(){
             var inc=$(this);
-            deferreds.push(
-			   $.get(inc.attr("src"), function(data){ inc.replaceWith(data); })
-			   );
+            deferreds.push($.get(inc.attr("src"), function(data){ inc.replaceWith(data); }));
 	});
     
     // Start the Backbone Application
