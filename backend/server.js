@@ -54,7 +54,9 @@ var serverOptions = {
 var proxyOptions = {
     '/identity.api.rackspacecloud.com': { port: 443, host: 'identity.api.rackspacecloud.com', target: { https: true} },
     '/dfw.servers.api.rackspacecloud.com': { port: 443, host: 'dfw.servers.api.rackspacecloud.com', target: { https: true} },
+    '/monitoring.api.rackspacecloud.com': { port: 443, host: 'monitoring.api.rackspacecloud.com', target: { https: true} },
     '/xmobile': { port: 8080, host: 'localhost', target: { https: false} },
+    '': { port: 8000, host: 'localhost', target: { https: false} },
 };
 
 // Initiate the Proxy Server

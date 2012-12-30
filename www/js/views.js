@@ -9,13 +9,6 @@ window.ContentView = Backbone.View.extend({
 	    var processed = _.template(template, null);
 	    $(this.options.targetSelector).html(processed);
 	},
-	
-	selectMenuItem: function (menuItem) {
-	    $('.nav li').removeClass('active');
-	    if (menuItem) {
-		$('.' + menuItem).addClass('active');
-	    }
-	}
 
     });
 
@@ -28,5 +21,4 @@ window.NavigationView = window.ContentView.extend({
 		$('.' + menuItem).addClass('active');
 	    }
 	}
-	
     });
