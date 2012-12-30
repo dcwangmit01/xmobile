@@ -103,21 +103,48 @@ function proxyifyUrl(url) {
 function registerRaxHandlers () {
     var rax = null;
 
+    // Load the settings if they have been previously saved
+    if (localStorage.getItem('raxsave')=="true") {
+	if ($('#raxuser').val() == "" && localStorage.getItem('raxuser')!=null) {
+	    $('#raxuser').val(localStorage.getItem('raxuser'));
+	}
+	if ($('#raxpass').val() == "" && localStorage.getItem('raxpass')!=null) {
+	    $('#raxpass').val(localStorage.getItem('raxpass'));
+	}
+	$('#raxsave').attr('checked', true);
+    }
+    
     $('#raxlogin').click(function(e) {
+	    // read the settings
 	    var username = $('#raxuser').val();
 	    var password = $('#raxpass').val();
-	    //var raxsave  = $('#raxsave').is(":checked");
-		
-	    var username="dcwangmit01";
-	    var password="eAp46z52yBYz";
+	    var raxsave  = $('#raxsave').is(":checked");
+
+	    if (raxsave == false) {
+		// clear the settings
+		localStorage.setItem('raxuser', "");
+		localStorage.setItem('raxpass', "");
+		localStorage.setItem('raxsave', "false");
+	    }
+
 	    rax = new Rax(username, password, { urlRewriteFunc: proxyifyUrl });
-		
 	    rax.authenticate({ 
 		    doneCallback: function(data) {
+			if (raxsave == true) {
+			    // save the settings
+			    localStorage.setItem('raxuser', username);
+			    localStorage.setItem('raxpass', password);
+			    localStorage.setItem('raxsave', "true");
+			}			
+			$('#signin_row').hide();
+			$('#metric_row').show();
 			window.utils.showAlert("Auth Successful", sprintf("Auth Successful token[%s] tenantid[%s]", rax.token, rax.tenantid), "alert-success");
-			$('#signin').hide();
 		    },
 			failCallback: function(data) {
+			    // clear the display
+			    $('#raxuser').val("");
+			    $('#raxpass').val("");
+			    $('#raxsave').attr('checked', false);
 			window.utils.showAlert("Auth Fail", sprintf("Auth Failed for username[%s] password[%s]", rax.username, rax.password), "alert-error");
 		    }
 		})
