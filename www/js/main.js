@@ -11,14 +11,42 @@ var AppRouter = Backbone.Router.extend({
 	    document.addEventListener('deviceready', function() {
 		    window.utils.showAlert("Device", "Detected", "alert-success");
 		});
-	    
+
+	    this.mobileView = new NavigationView({ templateSelector: '#mobileview',
+						   targetSelector: '#navbar' });
+	    this.mobileView.render();
+
+
+	    // not used in mobile view.  Keep things happy for now, but remove later
 	    this.navbarView = new NavigationView({ templateSelector: '#navbarview',
 						   targetSelector: '#navbar' });
-	    this.navbarView.render();
-
 	    this.sidebarView = new NavigationView({ templateSelector: '#sidebarview',
 						    targetSelector: '#sidebar' });
-	    this.sidebarView.render();
+	    /* Old Style
+	      <div class="container-fluid">
+                <div class="row-fluid">
+          	<div class="span2">
+          	  <div id="sidebar" class="well sidebar-nav"></div>
+          	  <br/>
+          	  <div id="alert" class="alert"></div>
+          	</div>
+          	<div class="span10">
+          	  <div id="content" class=""></div>
+          	  <br/>
+          	  <footer class="footer">
+                      <p>&copy; Open Source: <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+          	  </footer>
+          	</div>
+                </div>
+              </div>
+          	    this.navbarView = new NavigationView({ templateSelector: '#navbarview',
+          						   targetSelector: '#navbar' });
+          	    this.navbarView.render();
+          
+          	    this.sidebarView = new NavigationView({ templateSelector: '#sidebarview',
+          						    targetSelector: '#sidebar' });
+          	    this.sidebarView.render();
+	    */
 	},
     
 	home: function () {
@@ -97,6 +125,18 @@ function proxyifyUrl(url) {
 };
 
 
+function findAbsolutePosition(obj) {
+    var curleft = curtop = 0;
+    if (obj.offsetParent) {
+	do {
+	    curleft += obj.offsetLeft;
+	    curtop += obj.offsetTop;
+	} while (obj = obj.offsetParent);
+    }
+    return [curleft,curtop];
+    //returns an array
+}
+
 /**
  * Event Handlers
  */
@@ -159,11 +199,20 @@ function registerRaxHandlers () {
 	});
 	
     $('#metricList').change(function(e) {
-	    var o = e.target.options[e.target.selectedIndex];
+	    var o = $("#metricList option:selected")
 	    rax.graphMetric('#graph',
-			    o.getAttribute('entityid'),
-			    o.getAttribute('checkid'),
-			    o.getAttribute('metricid')
+			    o.attr('entityid'),
+			    o.attr('checkid'),
+			    o.attr('metricid')
+			    );
+	});
+
+    $(window).bind('orientationchange', function(e) {
+	    var o = $("#metricList option:selected")
+	    rax.graphMetric('#graph',
+			    o.attr('entityid'),
+			    o.attr('checkid'),
+			    o.attr('metricid')
 			    );
 	});
 };

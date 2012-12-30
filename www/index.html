@@ -8,7 +8,7 @@
     <meta name="author" content="David Wang">
 
     <!-- Styles -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -18,33 +18,31 @@
         padding: 9px 0;
       }
     </style>
-    <link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
+    <script type="text/javascript">
+        // disable scrolling
+        window.addEventListener('load', function() {
+            document.body.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            }, false);
+        }, false);
+    </script>
+
+    <link href="lib/nv.d3/nv.d3.css" rel="stylesheet" type="text/css"/>
   </head>
 
   <body>
 
-    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top"></div>
-
     <div class="container-fluid">
-      <div class="row-fluid">
-	<div class="span2">
-	  <div id="sidebar" class="well sidebar-nav"></div>
-	  <br/>
-	  <div id="alert" class="alert"></div>
-	</div>
-	<div class="span10">
-	  <div id="content" class=""></div>
-	  <br/>
-	  <footer class="footer">
-            <p>&copy; Open Source: <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
-	  </footer>
-	</div>
+      <div id="navbar" class="row-fluid span12 navbar navbar-inverse navbar-fixed-top"></div>
+      <div id="content" class="row-fluid span12"></div>
       </div>
     </div>
     

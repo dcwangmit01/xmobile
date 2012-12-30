@@ -128,8 +128,6 @@ var Rax = function initialize (username, password, options) {
 	var defaults = {
 	    numPoints: 256,
 	    lookBehindSeconds: 60*60*24,
-	    width: '100%',
-	    height: '100%',
 	    doneCallback: function() { return; }, // no-op
 	    failCallback: function() { return; }, // no-op
 	};
@@ -146,6 +144,12 @@ var Rax = function initialize (username, password, options) {
 		    })
 	.done(function(data) {
 		nv.addGraph(function() {
+			
+			var offset = $(domSelector).offset();
+			var height = window.innerHeight - offset.top - 20;
+			options.height = height;
+			options.width = '100%';
+
 			function processData(data) {
 			    var res = $.map(data.values, function(row) {
 				    return { x: Math.floor(row.timestamp/1000/60), y: row.average };
@@ -156,14 +160,15 @@ var Rax = function initialize (username, password, options) {
 					}];
 			};
 			
-			var chart = nv.models.multiBarChart();
+			var chart = nv.models.discreteBarChart();
+			chart.color(function() { return d3.rgb("violet");});
 			chart.xAxis
-			    .axisLabel('Time since Epoch (ms)')
-			    .tickFormat(d3.format('3,3f'));
-			
+			    .axisLabel('Last 24 Hours since Epoch (Minutes)')
+			    .ticks(3)
+			    .tickFormat(function (d) { return ''; }); // disable ticks
 			chart.yAxis
 			    .axisLabel(my.metricid)
-			    .tickFormat(d3.format(',6f'));
+			    .tickFormat(d3.format('.3f'));
 			
 			d3.select(domSelector)
 			    .attr("width", options.width)

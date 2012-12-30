@@ -1,5 +1,4 @@
 <script type="text/html" id="navbarview">
-  <!--
   <div class="navbar-inner">
     <div class="container-fluid">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -27,7 +26,19 @@
       </div>
     </div>
   </div>
-  -->
+</script>
+
+
+<script type="text/html" id="mobileview">
+  <div class="navbar-inner">
+    <a class="brand" href="#">xmobile</a>
+    <ul class="nav">
+      <!-- <li class="home"><a href="#">Home</a></li> -->
+      <li class="graph"><a href="#graph">D3</a></li>
+      <li class="rax"><a href="#rax">CM</a></li>
+      <li class="about"><a href="#about">About</a></li>
+    </ul>
+  </div>
 </script>
 
 
@@ -48,9 +59,9 @@
     <div class="row-fluid">
       <div class="span12">
 	<div class="hero-unit" style="background-image: url(lib/creativecommonsphotos/maggie_me_desert_photo.jpg); background-repeat:no-repeat;">
-	  <h1>Hello Universe!</h1>
-	  <p>This is a sample project</p>
-	  <p><a class="btn btn-primary btn-large" href="#graph">Proceed to Graph</a></p>
+	  <p>xmobile: Mobile Visualizations of Rackspace Cloud Monitoring Metrics</p>
+	  <p><a class="btn btn-primary btn-large" href="#graph">Proceed to D3</a></p>
+	  <p><a class="btn btn-primary btn-large" href="#rax">Proceed to CM</a></p>
 	</div>
       </div>
     </div>
@@ -61,12 +72,12 @@
 
 <script type="text/html" id="aboutview">
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="overflow:auto;">
 
     <div class="row-fluid">
       <div class="span12">
 	<img class="about-icon" src="lib/glyphicons_free/glyphicons_375_classic_hammer.png" style="float: left;"/>
-	<h4>&nbsp; Credit the Technology and Resources that Enabled this Site</h4>
+	<h4>&nbsp; Acknowledge the Technology and Resources that Enabled this Site</h4>
 	<ul>
 	  <li><a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></li>
 	  <li><a href="http://documentcloud.github.com/backbone/" target="_blank">Backbone.js</a></li>
@@ -80,7 +91,6 @@
 	  <li><a href="http://nvd3.org/" target="_blank">nvD3.js</a></li>
 	  <li><a href="http://underscorejs.org/" target="_blank">Underscore.js</a></li>
 	  <li><a href="http://www.flickr.com/photos/maggie-me/6835581528" target="_blank">Creative Commons Flickr Photo: maggie-me</a></li>
-	  <!-- <li><a href="" target="_blank"></a></li> -->
 	</ul>
       </div>
     </div>
@@ -150,21 +160,31 @@
 
   <script type="text/javascript">
     function exampleData() {
-    return stream_layers(3,10+Math.random()*100,.1).map(function(data, i) {
-    return { key: 'Stream' + i, values: data };
+        return stream_layers(3,10+Math.random()*100,.1).map(function(data, i) {
+        return { key: 'Stream' + i, values: data };
     });
     }
 
+    var offset = $('#chart1').offset();
+    console.log(sprintf('offset left[%s] top[%s]', offset.left, offset.top));
+    console.log(sprintf('window height[%s] width[%s]', window.innerHeight, window.innerWidth));
+    var height = window.innerHeight - offset.top - 20;
+    var options = { height: height, width: '100%' };
+
     nv.addGraph(function() {
-    var chart = nv.models.multiBarChart();
+    var chart = nv.models.discreteBarChart();
     
+    chart.color(function() { return d3.rgb("violet");});
+
     chart.xAxis
     .tickFormat(d3.format(',f'));
     
     chart.yAxis
-    .tickFormat(d3.format(',.1f'));
+    .tickFormat(d3.format('f'));
     
     d3.select('#chart1')
+    .attr("width", options.width)
+    .attr("height", options.height)
     .datum(exampleData())
     .transition().duration(500).call(chart);
     
@@ -184,7 +204,7 @@
     <div id="signin_row" class="row-fluid">
       <div class="span12">
 	<form id="signin" class="form-signin">
-	  <h2 class="form-signin-heading">Please sign in with your Rackspace Credentials</h2>
+	  <h2 class="form-signin-heading">Please sign in</h2>
 	  <input id="raxuser" type="text" class="input-block-level" placeholder="Rackspace Username">
 	  <input id="raxpass" type="password" class="input-block-level" placeholder="Rackspace Password">
 	  <label class="checkbox">
@@ -193,11 +213,13 @@
 	  <button id="raxlogin" class="btn btn-large btn-primary" type="submit">Sign in</button>
 	</form>
       </div>
+      <div id="alert" class="alert"></div>
     </div>
+
     
     <div id="metric_row" class="row-fluid" style="display:none">
       <div class="span12">
-	<div>Select an "Entity -> Check -> Metric" combination to graph</div>
+	<div>Select "Entity -> Check -> Metric"</div>
 	<select id="metricList" style="width:100%"></select>
       </div>
     </div>
