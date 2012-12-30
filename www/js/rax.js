@@ -163,8 +163,7 @@ var Rax = function initialize (username, password, options) {
 			var chart = nv.models.discreteBarChart();
 			chart.color(function() { return d3.rgb("violet");});
 			chart.xAxis
-			    .axisLabel('Last 24 Hours since Epoch (Minutes)')
-			    .ticks(3)
+			    .axisLabel('Last 24 Hours')
 			    .tickFormat(function (d) { return ''; }); // disable ticks
 			chart.yAxis
 			    .axisLabel(my.metricid)

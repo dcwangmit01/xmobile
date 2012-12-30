@@ -154,6 +154,7 @@
 
   <div class="container-fluid">
     <div class="row-fluid">
+      <p> D3 Example with Randomly Generated Data </p>
       <svg id="chart1" class="span12"></svg>
     </div>
   </div>
@@ -177,7 +178,8 @@
     chart.color(function() { return d3.rgb("violet");});
 
     chart.xAxis
-    .tickFormat(d3.format(',f'));
+    .tickFormat(function (d) { return ''; }); // disable ticks
+    //.tickFormat(d3.format(',f'));
     
     chart.yAxis
     .tickFormat(d3.format('f'));
