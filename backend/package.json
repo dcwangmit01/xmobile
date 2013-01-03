@@ -1,6 +1,6 @@
 {
-    "name": "swagger",
-    "description": "swagger",
+    "name": "xmobile",
+    "description": "xmobile",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
