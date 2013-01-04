@@ -155,6 +155,8 @@ function registerRaxHandlers () {
     }
     
     $('#raxlogin').click(function(e) {
+	    e.preventDefault();
+	    
 	    // read the settings
 	    var username = $('#raxuser').val();
 	    var password = $('#raxpass').val();
