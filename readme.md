@@ -1,23 +1,18 @@
-# Message
+# Experimental Mobile/Visualization/Cloud Monitoring App
 
-Experimental Mobile/Visualization/Cloud Monitoring App
+I currently work for Rackspace, and this is not an endorsed project.  However, one of the things I value about them is their support of open-source software.
 
-On and off during the holidays, I worked on a sample Mobile app that
-queries Cloud Monitoring Metric data and then graphs it using D3.  The
-code compiles down to iOS and Android, but also runs as a website with
-the help of a cross-domain proxy.  It needs to be refactored, doc'd,
-and visually prettied up, but it works well.
+Over the holidays, I wanted to learn about frontend, mobile, and asynchronous programming using Twitter Bootstrap, Jquery, Backbone.js, Node.js, Express.js, Underscore.js, Apache Cordova, PhoneGap, and D3.
 
-It'll be open sourced as soon as I get the right approvals, but for
-now you can download the source here:
-
-* http://xmobile.davidwang.com/xmobile/xmobile.tar.bz
-
-See below for Screenshots and instructions.
-
-Thanks!
+The result is this little Mobile app that queries Rackspace Cloud Monitoring Metric data and then graphs it using D3. The code compiles down to iOS and Android, but also runs as a website with the help of a cross-domain proxy (included). It needs to be refactored, doc’d, and visually prettied up, but it works well.
 
 -dave
+
+[Find me on LinkedIn](http://www.linkedin.com/in/dcwangmit01)
+
+[Check out my Blog](http://www.davidwang.com)
+
+[Follow me on Twitter @dcwangmit01](http://twitter.com/dcwangmit01)
 
 # Screenshots
 <img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/01_home.png" width="25%">
@@ -45,7 +40,7 @@ I think it works because the iOS app runs well within the Xcode iOS Simulator (s
 
 Navigate here:
 
-* https://xmobile.davidwang.com:8443/
+* http://xmobile.davidwang.com/
 
 # Serving Xmobile as a Web App on Linux
 
@@ -95,3 +90,10 @@ The software is completely client side, but a server is needed to initially serv
   <pre><code>cd xmobile/backend
   node server.js conf/config.yaml
   </code></pre>
+
+
+
+# License
+
+MIT License: http://opensource.org/licenses/MIT
+
