@@ -1,4 +1,3 @@
-
 # Message
 
 Experimental Mobile/Visualization/Cloud Monitoring App
@@ -21,14 +20,13 @@ Thanks!
 -dave
 
 # Screenshots
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/01_home.png" width="25%">
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/02_d3.png" width="25%">
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/03_cm_login.png" width="25%">
 
-<img src="doc/screenshots/20121230_ios/01_home.png" width="25%">
-<img src="doc/screenshots/20121230_ios/02_d3.png" width="25%">
-<img src="doc/screenshots/20121230_ios/03_cm_login.png" width="25%">
-
-<img src="doc/screenshots/20121230_ios/04_cm_metrics_selection.png" width="25%">
-<img src="doc/screenshots/20121230_ios/05_cm_metrics_graphing.png" width="25%">
-<img src="doc/screenshots/20121230_ios/06_about.png" width="25%">
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/04_cm_metrics_selection.png" width="25%">
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/05_cm_metrics_graphing.png" width="25%">
+<img src="https://raw.github.com/dcwangmit01/xmobile/master/doc/screenshots/20121230_ios/06_about.png" width="25%">
 
 
 # Installing Xmobile on an Android Device
